@@ -92,4 +92,18 @@ public class WebUtils {
     public static String gerarTimestamp() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
     }
+
+    public static void esperarElementoClicavel(WebDriver driver, WebElement elemento, int segundos) {
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(segundos) );
+        wait.until(ExpectedConditions.elementToBeClickable(elemento));
+    }
+
+
+    public static void validarTextoExato(WebDriver driver, WebElement elemento, String textoEsperado) {
+        String textoAtual = elemento.getText().trim();
+        if (!textoAtual.equals(textoEsperado.trim())) {
+            throw new AssertionError("Texto esperado não encontrado!");
+        }
+    }
+
 }

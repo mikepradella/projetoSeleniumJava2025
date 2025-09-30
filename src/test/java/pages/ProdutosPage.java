@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.WebUtils;
 
 public class ProdutosPage {
-    WebDriver driver;
+    private WebDriver driver;
 
     public ProdutosPage(WebDriver driver) {
         this.driver = driver;
@@ -17,20 +17,40 @@ public class ProdutosPage {
     }
 
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
-    WebElement campoAdicionarCarrinho;
+    private WebElement campoAdicionarCarrinho;
 
     @FindBy(xpath = "//span[@class='shopping_cart_badge']")
-    WebElement carrinho;
+    private WebElement carrinho;
+
+    @FindBy(xpath = "//a[@class='shopping_cart_link']")
+    private WebElement cliqueCarrinho;
+
+    @FindBy(xpath = "//div[@class='inventory_item_name']")
+    private WebElement validaProdutoCarrinho;
+
+
 
 
     public void clicarAdicionar() {
+        WebUtils.esperarElementoVisivel(driver, campoAdicionarCarrinho, 2);
         campoAdicionarCarrinho.click();
     }
 
-    public void validaCarrinho() {
+    public void validaCarrinho(String quantidade) {
         WebUtils.esperarElementoVisivel(driver,carrinho,2);
-        WebUtils.validarTexto(driver,carrinho,"1");
+        WebUtils.validarTexto(driver,carrinho,quantidade);
     }
+
+    public  void clicarCarrinho() {
+       WebUtils.esperarElementoVisivel(driver,cliqueCarrinho,2);
+         cliqueCarrinho.click();
+    }
+
+    public   void validaProduto(String produto) {
+        WebUtils.validarTextoExato(driver,validaProdutoCarrinho,produto);
+    }
+
+
 
 
 }
