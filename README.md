@@ -47,3 +47,6 @@ Após a execução, um relatório HTML será gerado em `target/report.html`.
 
 Qualquer dúvida, entre em contato !
 
+## Exemplo do Relatorio
+![alt text](image.png)
+
