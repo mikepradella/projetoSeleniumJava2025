@@ -1,4 +1,4 @@
-# projetoSeleniumJava2025
+# ProjetoSeleniumJava2025
 
 # Projeto de Automação de Testes Web
 
